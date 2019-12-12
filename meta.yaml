@@ -1,0 +1,37 @@
+{% set version = "4.7.2" %}
+
+package:
+  name: configobj
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/c/configobj/configobj-{{ version }}.tar.gz
+  sha256: 515ff923462592e8321df8b48c47e3428f8d406ee22b8de77bef969d1af11171
+
+build:
+  number: 0
+  noarch: python
+  script: "python -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - six
+  run:
+    - python
+    - six
+
+test:
+  imports:
+    - configobj
+
+about:
+  home: https://github.com/DiffSK/configobj
+  license: BSD-3-Clause
+  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
+  summary: Config file reading, writing and validation
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
